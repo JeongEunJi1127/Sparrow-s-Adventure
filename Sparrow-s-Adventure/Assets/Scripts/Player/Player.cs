@@ -21,7 +21,12 @@ public class Player : MonoBehaviour
         Condition = GetComponent<PlayerCondition>();
         Controller = GetComponent<PlayerController>();
         StateMachine = new PlayerStateMachine(this);
+    }
+
+    private void Start()
+    {
         StateMachine.ChangeState(StateMachine.WalkState);
+        Controller.SetSpeed(Data.PlayerGroundData.PlayerWalkSpeed);
     }
 
     private void Update()

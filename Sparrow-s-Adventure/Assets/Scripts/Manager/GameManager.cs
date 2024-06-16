@@ -1,6 +1,11 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    // Todo :: 웨이브 관리
+    public int Wave;
+
+    private void Awake()
+    {
+        Wave = 1;
+    }
 }

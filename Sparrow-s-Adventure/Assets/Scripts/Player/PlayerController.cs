@@ -29,9 +29,8 @@ public class PlayerController : MonoBehaviour
         IsAttacking = b;
     }
 
-    public void Move()
+    void Move()
     {
-        Debug.Log(moveSpeed);
         Vector3 moveDir = Vector3.forward * moveSpeed * Time.deltaTime;
         Controller.Move(moveDir);
     }

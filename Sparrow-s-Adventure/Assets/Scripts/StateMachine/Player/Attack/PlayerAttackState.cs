@@ -1,22 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerAttackState : PlayerBaseState
 {
     public PlayerAttackState(PlayerStateMachine _stateMachine) : base(_stateMachine)
     {
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public override void Enter()
     {
-        
+        base.Enter();
+        StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Exit()
     {
-        
+        base.Exit();
+        StopAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
     }
 }

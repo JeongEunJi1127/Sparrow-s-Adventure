@@ -16,8 +16,8 @@ MonoBehaviour:
     PlayerName: "\uCC38\uC0C8"
     PlayerHealth: 100
   PlayerGroundData:
-    PlayerWalkSpeed: 3
-    PlayerRunSpeed: 10
+    PlayerWalkSpeed: 10
+    PlayerRunSpeed: 20
   PlayerAttackData:
     PlayerAttackPower: 10
     AttackSpeed: 0.1

@@ -1,22 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerWalkState : PlayerGroundState
 {
     public PlayerWalkState(PlayerStateMachine _stateMachine) : base(_stateMachine)
     {
     }
-
-    // Start is called before the first frame update
-    void Start()
+    public override void Enter()
     {
-        
+        base.Enter();
+        StartAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Exit()
     {
-        
+        base.Exit();
+        StopAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
+    }
+
+    protected override void CheckPlayerZPos()
+    {
+        base.CheckPlayerZPos();
+        if (posZ >= 37 && posZ <= 80)
+        {
+            stateMachine.ChangeState(stateMachine.BaseAttackState);
+            stateMachine.Player.Controller.SetAttackState(true);
+        }
     }
 }

@@ -1,6 +1,10 @@
+using UnityEngine;
+
 public class PlayerBaseState : IState
 {
     protected PlayerStateMachine stateMachine;
+
+    protected float posZ;
 
     public PlayerBaseState(PlayerStateMachine _stateMachine)
     {
@@ -24,7 +28,7 @@ public class PlayerBaseState : IState
 
     public virtual void Update()
     {
-
+        CheckPlayerZPos();
     }
 
     protected void StartAnimation(int animatorHash)
@@ -34,6 +38,16 @@ public class PlayerBaseState : IState
 
     protected void StopAnimation(int animatorHash)
     {
-        stateMachine.Player.Animator.SetBool(animatorHash, false);  
+        stateMachine.Player.Animator.SetBool(animatorHash, false);
+    }
+
+    protected virtual void CheckPlayerZPos()
+    {
+        posZ = Mathf.Repeat(stateMachine.Player.transform.position.z, 125f);
+    }
+
+    protected void SetSpeed(float speed)
+    {
+        stateMachine.Player.Controller.SetSpeed(speed);
     }
 }

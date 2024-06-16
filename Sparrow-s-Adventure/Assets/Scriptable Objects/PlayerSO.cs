@@ -12,10 +12,10 @@ public class PlayerInfoData
 public class PlayerGroundData
 {
     [Header("Walk")]
-    [Range(0f,10f)] public float PlayerWalkSpeed;
+    [Range(0f,20f)] public float PlayerWalkSpeed;
 
     [Header("Run")]
-    [Range(0f, 25f)] public float PlayerRunSpeed;
+    [Range(0f, 40f)] public float PlayerRunSpeed;
 }
 
 [Serializable]

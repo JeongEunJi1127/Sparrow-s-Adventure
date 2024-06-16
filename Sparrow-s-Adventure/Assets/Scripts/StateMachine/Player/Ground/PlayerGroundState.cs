@@ -1,5 +1,3 @@
-using UnityEngine.Scripting.APIUpdating;
-
 public class PlayerGroundState : PlayerBaseState
 {
     protected float moveSpeed;
@@ -22,23 +20,5 @@ public class PlayerGroundState : PlayerBaseState
     public override void Update()
     {
         base.Update();
-        Move(stateMachine.Player.Data.PlayerGroundData.PlayerWalkSpeed);
-        //if (InBattleField()) Attack();
-    }
-
-    void Move(float moveSpeed)
-    {
-        stateMachine.Player.Controller.SetSpeed(moveSpeed);
-    }
-
-    void Attack()
-    {
-        stateMachine.ChangeState(stateMachine.BaseAttackState);
-        //stateMachine.Player.Controller.SetAttackState(true);
-    }
-
-    bool InBattleField()
-    {
-        return true;
     }
 }
