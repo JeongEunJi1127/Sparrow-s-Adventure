@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerBaseAttackState : PlayerAttackState
@@ -5,22 +6,26 @@ public class PlayerBaseAttackState : PlayerAttackState
     public PlayerBaseAttackState(PlayerStateMachine _stateMachine) : base(_stateMachine)
     {
     }
+
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.Player.AnimationData.BaseAttackParameterHash);
+        stateMachine.Player.Controller.StartAttack();
+        stateMachine.Player.Controller.OnAttack += StartBaseAttackAnim;
     }
 
     public override void Exit()
     {
         base.Exit();
+        stateMachine.Player.Controller.StopAttack();
+        stateMachine.Player.Controller.OnAttack -= StartBaseAttackAnim;
         StopAnimation(stateMachine.Player.AnimationData.BaseAttackParameterHash);
     }
 
     public override void Update()
     {
         base.Update();
-        if (FinishBattle()) OnRun();
+        //if (IsFinishBattle()) OnRun();
     }
 
     void OnRun()
@@ -30,10 +35,18 @@ public class PlayerBaseAttackState : PlayerAttackState
         SetSpeed(stateMachine.Player.Data.PlayerGroundData.PlayerRunSpeed);
     }
 
-    bool FinishBattle()
+    bool IsFinishBattle()
     {
-        // TODO :: 전투 구현 & 몬스터 다 잡으면 return true;
-        GameManager.Instance.Wave++;
-        return true;
+        if (ObjectPoolManager.Instance.CountActiveInHierarchy("Enemy") == 0)
+        {
+            GameManager.Instance.NextWave();
+            return true;
+        }
+        return false;
+    }
+
+    void StartBaseAttackAnim()
+    {
+        StartAnimation(stateMachine.Player.AnimationData.BaseAttackParameterHash);
     }
 }

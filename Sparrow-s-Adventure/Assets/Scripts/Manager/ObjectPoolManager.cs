@@ -58,4 +58,17 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         }
         return null;
     }
+
+    public int CountActiveInHierarchy(string tag)
+    {
+        int count = 0;
+        foreach (GameObject obj in PoolDictionary[tag])
+        {
+            if (obj.activeInHierarchy)
+            {
+               count++;
+            }
+        }
+        return count;
+    }
 }

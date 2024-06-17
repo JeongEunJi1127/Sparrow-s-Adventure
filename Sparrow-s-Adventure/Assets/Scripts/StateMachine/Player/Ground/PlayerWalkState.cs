@@ -1,3 +1,4 @@
+using UnityEngine;
 public class PlayerWalkState : PlayerGroundState
 {
     public PlayerWalkState(PlayerStateMachine _stateMachine) : base(_stateMachine)

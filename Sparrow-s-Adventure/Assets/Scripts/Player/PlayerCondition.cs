@@ -2,22 +2,18 @@ using UnityEngine;
 
 public class PlayerCondition : MonoBehaviour
 {
-    private float health;
+    public float nowHealth;
     private float maxHealth;
 
     private void Awake()
     {
-        maxHealth = health;
-    }
-
-    private void Start()
-    {
-        health = CharacterManager.Instance.Player.Data.PlayerInfoData.PlayerHealth;
+        maxHealth = nowHealth;
+        nowHealth = CharacterManager.Instance.Player.Data.PlayerInfoData.PlayerHealth;
     }
 
     public void Heal(float amount)
     {
-        health = Mathf.Max(health + amount, maxHealth);
+        nowHealth = Mathf.Max(nowHealth + amount, maxHealth);
     }
 
     public void UpgradeHealth(float amount)
@@ -28,8 +24,8 @@ public class PlayerCondition : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        health = Mathf.Min(0, health - amount);
-        if(health < 0) { Die(); }
+        nowHealth = Mathf.Min(0, nowHealth - amount);
+        if(nowHealth < 0) { Die(); }
     }
 
     public void Die()
