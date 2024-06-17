@@ -17,9 +17,6 @@ public class UIManager : Singleton<UIManager>
     [Header("PromptText")]
     [SerializeField] private TextMeshProUGUI promptText;
 
-    [Header("HPBar")]
-    [SerializeField] private Image fillImage;
-
     private bool isShowingPrompt = false;
 
     private void Start()

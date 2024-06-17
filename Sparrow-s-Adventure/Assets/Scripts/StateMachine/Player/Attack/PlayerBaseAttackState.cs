@@ -12,6 +12,7 @@ public class PlayerBaseAttackState : PlayerAttackState
         base.Enter();
         stateMachine.Player.Controller.OnAttack += StartBaseAttackAnim;
         stateMachine.Player.Controller.StartAttack();
+        // TODO :: 몬스터 생성
     }
 
     public override void Exit()
@@ -24,7 +25,7 @@ public class PlayerBaseAttackState : PlayerAttackState
     public override void Update()
     {
         base.Update();
-        //if (IsFinishBattle()) OnRun();
+        //if (IsFinishBattle()) OnRun(); 몬스터 다 잡으면 Run상태로 돌입
     }
 
     void OnRun()
@@ -46,6 +47,6 @@ public class PlayerBaseAttackState : PlayerAttackState
 
     void StartBaseAttackAnim()
     {
-        StartAnimation(stateMachine.Player.AnimationData.BaseAttackParameterHash);
+        stateMachine.Player.Animator.SetTrigger(stateMachine.Player.AnimationData.BaseAttackParameterHash);
     }
 }

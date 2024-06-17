@@ -8,10 +8,10 @@ public class PlayerCondition : MonoBehaviour
 
     public Image HPBar;
 
-    private void Awake()
+    private void Start()
     {
-        maxHealth = nowHealth;
         nowHealth = CharacterManager.Instance.Player.Data.PlayerInfoData.PlayerHealth;
+        maxHealth = nowHealth;
     }
 
     private void Update()

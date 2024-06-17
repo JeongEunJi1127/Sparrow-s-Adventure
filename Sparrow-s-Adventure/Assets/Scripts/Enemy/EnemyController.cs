@@ -11,11 +11,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float attackCooltime;
 
     private bool isAttacking;
+    private Enemy enemy;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        enemy = GetComponent<Enemy>();
 
         isAttacking = false;
     }
@@ -55,7 +57,7 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Attack()
     {
-        Debug.Log("공격");
+        Debug.Log("해골 공격");
         isAttacking = true;
         animator.SetTrigger("Attack");
         yield return new WaitForSeconds(attackCooltime);
