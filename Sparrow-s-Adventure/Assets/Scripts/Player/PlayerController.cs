@@ -4,17 +4,18 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
-    public CharacterController Controller;
+    private CharacterController controller;
 
     public event Action OnAttack;
     public bool IsAttacking;
+    public LayerMask EnemyLayerMask;
 
     private float moveSpeed;
 
     private void Awake()
     {
         IsAttacking = false;
-        Controller = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
     }
     private void Start()
     {
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         Vector3 moveDir = Vector3.forward * moveSpeed * Time.deltaTime;
-        Controller.Move(moveDir);
+        controller.Move(moveDir);
     }
 
     public void SetAttackState(bool b)
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator AttackRoutine()
     {
-        while(true)
+        while(CanDetectEnemy())
         {
             CallAttackEvent();
             // 최대 1초에 2번 공격. 공격속도 = 1초 당 공격 횟수.
@@ -63,6 +64,17 @@ public class PlayerController : MonoBehaviour
     {
         // TODO :: 몬스터 구현하고 공격 구현하기
         Debug.Log("공격!");
+
+    }
+
+    bool CanDetectEnemy()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + Vector3.forward, Vector3.forward, out hit, 3f, EnemyLayerMask))
+        {
+            return true;
+        }
+        return false;
     }
 
     public void StartAttack()

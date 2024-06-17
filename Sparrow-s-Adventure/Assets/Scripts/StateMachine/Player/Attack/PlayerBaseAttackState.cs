@@ -10,15 +10,14 @@ public class PlayerBaseAttackState : PlayerAttackState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.Player.Controller.StartAttack();
         stateMachine.Player.Controller.OnAttack += StartBaseAttackAnim;
+        stateMachine.Player.Controller.StartAttack();
     }
 
     public override void Exit()
     {
         base.Exit();
         stateMachine.Player.Controller.StopAttack();
-        stateMachine.Player.Controller.OnAttack -= StartBaseAttackAnim;
         StopAnimation(stateMachine.Player.AnimationData.BaseAttackParameterHash);
     }
 

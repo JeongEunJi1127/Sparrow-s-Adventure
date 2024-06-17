@@ -1,14 +1,22 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCondition : MonoBehaviour
 {
     public float nowHealth;
     private float maxHealth;
 
+    public Image HPBar;
+
     private void Awake()
     {
         maxHealth = nowHealth;
         nowHealth = CharacterManager.Instance.Player.Data.PlayerInfoData.PlayerHealth;
+    }
+
+    private void Update()
+    {
+        HPBar.fillAmount = GetPercentage();
     }
 
     public void Heal(float amount)
@@ -31,5 +39,9 @@ public class PlayerCondition : MonoBehaviour
     public void Die()
     {
         Debug.Log("Á×À½");
+    }
+    public float GetPercentage()
+    {
+        return nowHealth / maxHealth;
     }
 }
