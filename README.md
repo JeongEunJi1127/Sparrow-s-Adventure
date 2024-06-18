@@ -13,6 +13,6 @@ C#
 ```
 
 ### :bulb: Notion    
-[Sparrow-s-Adventure]([https://jeongeunji1127.tistory.com/52](https://www.notion.so/Sparrow-s-Adventure-225f886a94ae4973a1769b38712332a2))
+[Sparrow-s-Adventure](https://www.notion.so/Sparrow-s-Adventure-225f886a94ae4973a1769b38712332a2)
 
 
