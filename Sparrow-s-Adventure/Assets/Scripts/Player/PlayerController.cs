@@ -59,12 +59,20 @@ public class PlayerController : MonoBehaviour
         {
             CallAttackEvent();
             canAttack = true;
-            GameObject obj = GetTarget();
-            if(obj != null)  Attack(GetTarget());    
 
             // 최대 1초에 2번 공격. 공격속도 = 1초 당 공격 횟수.
             float attackSpeed = CharacterManager.Instance.Player.Data.PlayerAttackData.AttackSpeed;
             float waitSeconds = 1 / attackSpeed <= 2 ? 1 / attackSpeed : 2;
+
+            if (CharacterManager.Instance.Player.Animator != null)
+            {
+                CharacterManager.Instance.Player.Animator.SetFloat("BaseAttackSpeed", attackSpeed);
+            }
+
+
+            GameObject obj = GetTarget();
+            if (obj != null)  Attack(GetTarget());
+
             yield return new WaitForSeconds(waitSeconds);
         }
     }

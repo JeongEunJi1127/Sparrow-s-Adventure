@@ -18,8 +18,9 @@ public class HPBarUI : MonoBehaviour
 
     void RotateTowardsCamera()
     {
-        Vector3 direction = (mainCamera.transform.position - hpBar.transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(-direction);
-        hpBar.transform.rotation = lookRotation;
+        //Vector3 direction = (mainCamera.transform.position - hpBar.transform.position).normalized;
+        //Quaternion lookRotation = Quaternion.LookRotation(-direction);
+        //hpBar.transform.rotation = lookRotation;
+        transform.LookAt(transform.position + mainCamera.transform.rotation * Vector3.forward, mainCamera.transform.rotation * Vector3.up);
     }
 }

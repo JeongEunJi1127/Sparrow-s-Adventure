@@ -69,7 +69,9 @@ public class UIManager : Singleton<UIManager>
 
         promptText.gameObject.SetActive(true );
         isShowingPrompt = true;
+
         yield return new WaitForSeconds(1f);
+
         promptText.gameObject.SetActive(false);
         isShowingPrompt = false;
     }

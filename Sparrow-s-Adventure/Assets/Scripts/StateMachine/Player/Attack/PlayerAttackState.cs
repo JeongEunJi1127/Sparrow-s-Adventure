@@ -8,7 +8,6 @@ public class PlayerAttackState : PlayerBaseState
     {
         base.Enter();
         StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
-        // 몹 스폰 - 위치 변경
         ObjectPoolManager.Instance.SpawnFromPool("Enemy");
     }
 

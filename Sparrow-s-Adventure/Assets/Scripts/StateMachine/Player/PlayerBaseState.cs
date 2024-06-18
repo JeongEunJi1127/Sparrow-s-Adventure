@@ -5,6 +5,8 @@ public class PlayerBaseState : IState
     protected PlayerStateMachine stateMachine;
 
     protected float posZ;
+    private float checkInterval = 0.5f;  
+    private float nextCheckTime = 0f;
 
     public PlayerBaseState(PlayerStateMachine _stateMachine)
     {
@@ -28,7 +30,11 @@ public class PlayerBaseState : IState
 
     public virtual void Update()
     {
-        CheckPlayerZPos();
+        if (Time.time >= nextCheckTime)
+        {
+            CheckPlayerZPos();
+            nextCheckTime = Time.time + checkInterval;
+        }
     }
 
     protected void StartAnimation(int animatorHash)
