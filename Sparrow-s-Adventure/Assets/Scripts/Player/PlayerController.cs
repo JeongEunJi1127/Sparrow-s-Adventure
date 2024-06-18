@@ -113,7 +113,6 @@ public class PlayerController : MonoBehaviour
 
     void Attack(GameObject obj)
     {
-        Debug.Log("참새공격");
         canAttack = false;
         float playerAttackDamage = CharacterManager.Instance.Player.Data.PlayerAttackData.PlayerAttackPower ;
         obj.GetComponent<EnemyCondition>().CallDamageEvent(playerAttackDamage);

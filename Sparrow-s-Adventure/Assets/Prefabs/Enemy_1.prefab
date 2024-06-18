@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  attackDistance: 3
+  attackDistance: 2
   attackCooltime: 5
 --- !u!114 &8032412465857676085
 MonoBehaviour:

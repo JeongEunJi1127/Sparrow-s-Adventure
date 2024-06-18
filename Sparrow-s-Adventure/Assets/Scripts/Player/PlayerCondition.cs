@@ -33,6 +33,7 @@ public class PlayerCondition : MonoBehaviour
     public void TakeDamage(float amount)
     {
         nowHealth -= amount;
+        UIManager.Instance.UpdateStatText();
         if(nowHealth <= 0) { Die(); }
     }
 

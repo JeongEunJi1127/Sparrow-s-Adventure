@@ -19,5 +19,5 @@ MonoBehaviour:
     PlayerWalkSpeed: 10
     PlayerRunSpeed: 20
   PlayerAttackData:
-    PlayerAttackPower: 10
+    PlayerAttackPower: 5
     AttackSpeed: 0.1

@@ -17,14 +17,13 @@ public class EnemyCondition : MonoBehaviour
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
+        nowHealth = enemy.Data.EnemyHealth;
+        maxHealth = nowHealth;
     }
 
     private void Start()
     {
         OnDamage += TakeDamage;
-
-        nowHealth = enemy.Data.EnemyHealth;
-        maxHealth = nowHealth;
     }
     private void Update()
     {
@@ -39,12 +38,21 @@ public class EnemyCondition : MonoBehaviour
     public void TakeDamage(float amount)
     {
         nowHealth -= amount;
-        if (nowHealth <= 0) { Die(); }
+        if (nowHealth <= 0) 
+        {
+            nowHealth = 0;
+            Die(); 
+        }
+    }
+
+    public void Revival()
+    {
+        nowHealth = maxHealth;       
     }
 
     public void Die()
     {
-        enemy.Animator.SetBool("Die", true);
+        enemy.Animator.SetTrigger("Die");
         StartCoroutine(DisableAfterAnimation());
     }
 

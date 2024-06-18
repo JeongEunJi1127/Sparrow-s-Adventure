@@ -15,4 +15,9 @@ public class Enemy : MonoBehaviour
         Condition = GetComponent<EnemyCondition>();
         Animator = GetComponent<Animator>();
     }
+
+    private void OnEnable()
+    {
+        Condition.Revival();
+    }
 }

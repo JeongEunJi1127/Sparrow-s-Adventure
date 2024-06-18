@@ -43,7 +43,7 @@ public class PlayerBaseState : IState
 
     protected virtual void CheckPlayerZPos()
     {
-        posZ = Mathf.Repeat(stateMachine.Player.transform.position.z, 125f);
+        posZ = Mathf.Repeat(stateMachine.Player.transform.position.z, 135f);
     }
 
     protected void SetSpeed(float speed)

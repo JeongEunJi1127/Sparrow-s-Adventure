@@ -52,6 +52,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         {
             if (!obj.activeSelf)
             {
+                obj.transform.position = new Vector3(0,0,65 + (135 * (GameManager.Instance.Wave-1)));
                 obj.SetActive(true);
                 return obj;
             }
