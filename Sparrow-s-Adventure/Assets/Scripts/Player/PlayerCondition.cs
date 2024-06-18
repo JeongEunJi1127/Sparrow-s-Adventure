@@ -32,8 +32,8 @@ public class PlayerCondition : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        nowHealth = Mathf.Min(0, nowHealth - amount);
-        if(nowHealth < 0) { Die(); }
+        nowHealth -= amount;
+        if(nowHealth <= 0) { Die(); }
     }
 
     public void Die()

@@ -417,6 +417,8 @@ GameObject:
   - component: {fileID: 2149520552158838373}
   - component: {fileID: 5470300376278968036}
   - component: {fileID: 7040304177912038051}
+  - component: {fileID: 9010112380108728577}
+  - component: {fileID: 7804107280306510859}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -517,6 +519,34 @@ MonoBehaviour:
     runParameter: Run
     attackParameter: '@Attack'
     baseAttackParameter: BaseAttack
+--- !u!114 &9010112380108728577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4572243852207103771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71295dd156fbcd74db9132ff947a5884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  drag: 0
+--- !u!114 &7804107280306510859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4572243852207103771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71295dd156fbcd74db9132ff947a5884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  drag: 0
 --- !u!1 &5057519411351278699
 GameObject:
   m_ObjectHideFlags: 0

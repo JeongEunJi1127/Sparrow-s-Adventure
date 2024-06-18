@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public bool IsAttacking;
     public LayerMask EnemyLayerMask;
 
+    Transform bodyTransform;
     private float moveSpeed;
     private bool canAttack;
 
@@ -18,6 +19,11 @@ public class PlayerController : MonoBehaviour
         IsAttacking = false;
         canAttack = true;
         controller = GetComponent<CharacterController>();
+    }
+
+    private void Start()
+    {
+        bodyTransform = transform.Find("Body");
     }
 
     private void Update()
@@ -37,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        Vector3 moveDir = Vector3.forward * moveSpeed * Time.deltaTime;
+        Vector3 moveDir = (Vector3.forward * moveSpeed+ (CharacterManager.Instance.Player.ForceReceiver.Movement)) * Time.deltaTime;
         controller.Move(moveDir);
     }
 
@@ -50,34 +56,29 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
-            if (CanDetectEnemy())
-            {
-                Debug.Log("참새공격감지");
-                CallAttackEvent();
-                canAttack = true;
+            CallAttackEvent();
+            canAttack = true;
+            GameObject obj = GetTarget();
+            if(obj != null)  Attack(GetTarget());    
 
-                // 최대 1초에 2번 공격. 공격속도 = 1초 당 공격 횟수.
-                float attackSpeed = CharacterManager.Instance.Player.Data.PlayerAttackData.AttackSpeed;
-                float waitSeconds = 1 / attackSpeed <= 2 ? 1 / attackSpeed : 2;
-                yield return new WaitForSeconds(waitSeconds);
-            }
-            else
-            {
-                yield return new WaitForSeconds(1f);
-            }
+            // 최대 1초에 2번 공격. 공격속도 = 1초 당 공격 횟수.
+            float attackSpeed = CharacterManager.Instance.Player.Data.PlayerAttackData.AttackSpeed;
+            float waitSeconds = 1 / attackSpeed <= 2 ? 1 / attackSpeed : 2;
+            yield return new WaitForSeconds(waitSeconds);
         }
     }
 
-    bool CanDetectEnemy()
-    { 
-        // 참새도 몸통 돌려주기
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position + Vector3.forward, Vector3.forward, out hit, 3f, EnemyLayerMask))
-        {
-            return true;
-        }
-        return false;
-    }
+    //bool CanDetectEnemy()
+    //{ 
+    //    RaycastHit hit;
+    //    Debug.DrawRay(bodyTransform.position + bodyTransform.forward, bodyTransform.forward * 3f, Color.cyan);
+    //    if (Physics.Raycast(bodyTransform.position + bodyTransform.forward, bodyTransform.forward * 3f, out hit, 30f, EnemyLayerMask))
+    //    {
+    //        Debug.Log("Enemy detected: " + hit.collider.gameObject.name);
+    //        return true;
+    //    }
+    //    return false;
+    //}
 
     public void StartAttack()
     {
@@ -87,15 +88,27 @@ public class PlayerController : MonoBehaviour
     public void StopAttack()
     {
         StopCoroutine(AttackRoutine());
+        canAttack = true;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(collision.gameObject.layer == 7 && canAttack)
+    //    {
+    //        Attack(collision.gameObject);
+    //    }
+    //}
+
+    GameObject GetTarget()
     {
-        if(collision.gameObject.layer == 7 && canAttack)
+        foreach (var enemy in ObjectPoolManager.Instance.PoolDictionary["Enemy"])
         {
-            Attack(collision.gameObject);
-            // 질문. 여기서 getcomponent밖에 방법이 없는지
+            if (enemy.activeInHierarchy)
+            {
+                return enemy;
+            }
         }
+        return null;
     }
 
     void Attack(GameObject obj)

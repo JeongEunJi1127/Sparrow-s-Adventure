@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 8508380544562557802}
   - component: {fileID: 4133321822919007473}
   - component: {fileID: 8032412465857676085}
+  - component: {fileID: 7679787878551361917}
   m_Layer: 7
   m_Name: Enemy_1
   m_TagString: Untagged
@@ -243,7 +244,7 @@ Animator:
   m_GameObject: {fileID: 998559572459799853}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 41f081d5c6d286c47a33bed3f84de79a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 69ce5dd747afb75488c00ed0f554f1d6, type: 2}
+  m_Controller: {fileID: 9100000, guid: d6a767edb1e6ffd4f9edf820e5c6196f, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -296,6 +297,7 @@ MonoBehaviour:
     type: 2}
   Controller: {fileID: 0}
   Condition: {fileID: 0}
+  Animator: {fileID: 0}
 --- !u!114 &4133321822919007473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,8 +310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a018606bd9f24e34ba002c99b215c3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  attackDistance: 1
+  moveSpeed: 15
+  attackDistance: 3
   attackCooltime: 5
 --- !u!114 &8032412465857676085
 MonoBehaviour:
@@ -324,6 +326,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hPBar: {fileID: 1039303220694407114}
+--- !u!114 &7679787878551361917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998559572459799853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71295dd156fbcd74db9132ff947a5884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  drag: 0
 --- !u!1 &1052208649231590518
 GameObject:
   m_ObjectHideFlags: 0

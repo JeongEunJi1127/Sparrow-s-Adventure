@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public PlayerCondition Condition { get; private set; }
     public PlayerController Controller { get; private set; }
     public PlayerStateMachine StateMachine { get; private set; }
+    public ForceReceiver ForceReceiver { get; private set; }
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Condition = GetComponent<PlayerCondition>();
         Controller = GetComponent<PlayerController>();
+        ForceReceiver = GetComponent<ForceReceiver>();
         StateMachine = new PlayerStateMachine(this);
     }
 

@@ -7,9 +7,9 @@ public class PlayerAttackState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        // ¸÷ ½ºÆù
-        //ObjectPoolManager.Instance.SpawnFromPool("Enemy");
-        StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash); 
+        StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
+        // ¸÷ ½ºÆù - À§Ä¡ º¯°æ
+        ObjectPoolManager.Instance.SpawnFromPool("Enemy");
     }
 
     public override void Exit()

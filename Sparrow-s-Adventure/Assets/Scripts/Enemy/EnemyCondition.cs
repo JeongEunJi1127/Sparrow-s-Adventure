@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,15 +38,22 @@ public class EnemyCondition : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        nowHealth = Mathf.Min(0, nowHealth - amount);
-        if (nowHealth < 0) { Die(); }
-        // ³Ë¹é Ã³¸®
+        nowHealth -= amount;
+        if (nowHealth <= 0) { Die(); }
     }
 
     public void Die()
     {
-        Debug.Log("Á×À½");
+        enemy.Animator.SetBool("Die", true);
+        StartCoroutine(DisableAfterAnimation());
     }
+
+    IEnumerator DisableAfterAnimation()
+    {
+        yield return new WaitForSeconds(3f);
+        gameObject.SetActive(false);
+    }
+
     public float GetPercentage()
     {
         return nowHealth / maxHealth;

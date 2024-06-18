@@ -35,6 +35,8 @@ public class EnemyController : MonoBehaviour
     void Move()
     {
         Vector3 moveDir = (CharacterManager.Instance.Player.transform.position - transform.position).normalized * moveSpeed * Time.deltaTime;
+        moveDir.y = 0;
+
         animator.SetBool("Walk", true);
         Rotate();
         controller.Move(moveDir);
@@ -57,9 +59,10 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Attack()
     {
-        Debug.Log("ÇØ°ñ °ø°Ý");
         isAttacking = true;
         animator.SetTrigger("Attack");
+        Rotate();
+        CharacterManager.Instance.Player.Condition.TakeDamage(enemy.Data.EnemyAttackPower);
         yield return new WaitForSeconds(attackCooltime);
         isAttacking = false;
     }

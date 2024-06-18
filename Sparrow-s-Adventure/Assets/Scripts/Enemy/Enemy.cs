@@ -6,11 +6,13 @@ public class Enemy : MonoBehaviour
 
     public EnemyController Controller;
     public EnemyCondition Condition;
+    public Animator Animator;
 
     private void Awake()
     {
         CharacterManager.Instance.Enemy.Add(this);
         Controller = GetComponent<EnemyController>();
         Condition = GetComponent<EnemyCondition>();
+        Animator = GetComponent<Animator>();
     }
 }

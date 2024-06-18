@@ -46,18 +46,18 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         return _obj;
     }
 
-    //public GameObject SpawnFromPool(string tag)
-    //{
-    //    foreach (GameObject obj in PoolDictionary[tag])
-    //    {
-    //        if (!obj.activeSelf)
-    //        {
-    //            obj.SetActive(true);
-    //            return obj;
-    //        }
-    //    }
-    //    return null;
-    //}
+    public GameObject SpawnFromPool(string tag)
+    {
+        foreach (GameObject obj in PoolDictionary[tag])
+        {
+            if (!obj.activeSelf)
+            {
+                obj.SetActive(true);
+                return obj;
+            }
+        }
+        return null;
+    }
 
     public int CountActiveInHierarchy(string tag)
     {
