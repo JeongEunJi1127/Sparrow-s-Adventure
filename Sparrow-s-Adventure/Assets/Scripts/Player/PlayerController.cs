@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator AttackRoutine()
     {
+        yield return new WaitForSeconds(2f);
         while (true)
         {
             CallAttackEvent();

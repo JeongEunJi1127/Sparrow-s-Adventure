@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  attackDistance: 2
+  attackDistance: 3
   attackCooltime: 5
 --- !u!114 &8032412465857676085
 MonoBehaviour:
@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hPBar: {fileID: 1039303220694407114}
+  IsDie: 0
 --- !u!114 &7679787878551361917
 MonoBehaviour:
   m_ObjectHideFlags: 0

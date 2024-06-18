@@ -51,6 +51,7 @@ public class UIManager : Singleton<UIManager>
                 CharacterManager.Instance.Player.Data.PlayerAttackData.PlayerAttackPower++;
                 break;
             case 1:
+                // TODO :: 체력 이미 maxHealth면 포인트 못쓰게 막기
                 CharacterManager.Instance.Player.Condition.Heal(10); 
                 break;
             case 2:

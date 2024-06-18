@@ -21,7 +21,11 @@ public class PlayerCondition : MonoBehaviour
 
     public void Heal(float amount)
     {
-        nowHealth = Mathf.Max(nowHealth + amount, maxHealth);
+        nowHealth += amount;
+        if(nowHealth > maxHealth)
+        {
+            nowHealth = maxHealth;
+        }
     }
 
     public void TakeDamage(float amount)
