@@ -51,7 +51,7 @@ public class UIManager : Singleton<UIManager>
                 CharacterManager.Instance.Player.Data.PlayerAttackData.PlayerAttackPower++;
                 break;
             case 1:
-                CharacterManager.Instance.Player.Condition.UpgradeHealth(1); 
+                CharacterManager.Instance.Player.Condition.Heal(10); 
                 break;
             case 2:
                 CharacterManager.Instance.Player.Data.PlayerAttackData.AttackSpeed+=0.1f;

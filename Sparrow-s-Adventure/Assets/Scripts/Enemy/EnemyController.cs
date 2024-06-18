@@ -59,11 +59,14 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Attack()
     {
-        isAttacking = true;
-        animator.SetTrigger("Attack");
-        Rotate();
-        CharacterManager.Instance.Player.Condition.TakeDamage(enemy.Data.EnemyAttackPower);
-        yield return new WaitForSeconds(attackCooltime);
-        isAttacking = false;
+        if (!enemy.Condition.IsDie)
+        {
+            isAttacking = true;
+            animator.SetTrigger("Attack");
+            Rotate();
+            CharacterManager.Instance.Player.Condition.TakeDamage(enemy.Data.EnemyAttackPower);
+            yield return new WaitForSeconds(attackCooltime);
+            isAttacking = false;
+        }
     }
 }

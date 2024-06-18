@@ -24,12 +24,6 @@ public class PlayerCondition : MonoBehaviour
         nowHealth = Mathf.Max(nowHealth + amount, maxHealth);
     }
 
-    public void UpgradeHealth(float amount)
-    {
-        maxHealth += amount;
-        Heal(amount);
-    }
-
     public void TakeDamage(float amount)
     {
         nowHealth -= amount;

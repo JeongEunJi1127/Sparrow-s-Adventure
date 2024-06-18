@@ -13,12 +13,14 @@ public class EnemyCondition : MonoBehaviour
     [SerializeField] private Image hPBar;
 
     private Enemy enemy;
+    public bool IsDie;
 
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
         nowHealth = enemy.Data.EnemyHealth;
         maxHealth = nowHealth;
+        IsDie = false;
     }
 
     private void Start()
@@ -47,13 +49,15 @@ public class EnemyCondition : MonoBehaviour
 
     public void Revival()
     {
-        nowHealth = maxHealth;       
+        nowHealth = maxHealth;
+        IsDie = false;
     }
 
     public void Die()
     {
         enemy.Animator.SetTrigger("Die");
         StartCoroutine(DisableAfterAnimation());
+        IsDie = true;
     }
 
     IEnumerator DisableAfterAnimation()
